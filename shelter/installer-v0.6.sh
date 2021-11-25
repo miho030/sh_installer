@@ -58,22 +58,20 @@ function make_service(){
         if [ -f "$service_file_path" ]; then
         echo "[+] Agent service has been already registed. -> $service_file_path"
         else
-        echo "[Unit]
+        echo "
+[Unit]
 Description=BoB10 HurryUp Agent Manager Server
-Wants=network-online.target
-After=network.target network-online.target
 
 [Service]
-Type=forking
-PIDFile=/run/HurryupAM.pid
 ExecStart=/usr/local/bin/HurryUp_Agent_Manager
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target " >> /etc/systemd/system/HurryupAM.service
+WantedBy=multi-user.target " >> $service_file_path
 
 
         echo "[INFO] Successfully regist HurryupAM.service -> $service_file_path"
+        chmod 755 service_file_path
         fi
 }
 
@@ -100,6 +98,10 @@ function enable_service(){
 
 #-----------------------------------------------
 function install(){
+
+
+
+
         # Check Os platform name and load several agent file.
         if [ $check_raspberry_comm == "raspberrypi" ]; then
                 echo "[INFO] Checking OS platform name.  ->  $check_raspberry_comm"
@@ -122,7 +124,7 @@ function install(){
         if [ -e "$agent_install_all_path" ]; then
                 echo "[+] $agent_file already installed.  ->  $agent_install_path"
         else
-                
+                chmod 755 $agent_file
                 cp -r $agent_file $agent_install_path
                 echo "[INFO] Successfully install $agent_file.  ->   $agent_install_path"
         fi
@@ -160,32 +162,31 @@ function uninstall(){
         echo ""
         echo "[WARN] This operation might lose all data gnerated of Agent program of the Hurryup solution !!"
         echo ""
-        echo "Do you uninstall Hurryup Agent program? <y/n> : "
 
-        while true; do
-                        read -p "Do you uninstall Hurryup Agent program? <y/n> : " user_answer
-                        case user_answer in
-                        y)      systemctl disable HurrupAM
-                                        service_file_path
-                                        rm -rf $agent_install_path
-                                        rm -rf $log_dir_path
-                                        ;;
-                        n)      exit 1
-                                        ;;
-                        *) echo "Please enter your answer 'yes or no' <y/n>"
-                                        ;;
-                        esac
-        done
+        systemctl stop HurryupAM
+        systemctl disable HurrupAM
+        rm -rf $service_file_path
+        rm -rf $agent_install_path
 
-        #inform about delete
-        echo "[INFO] Successfully disable system service.  ->  $service_file_path"
-        echo "[INFO] Successfully delete system service file.  ->  $HurryupAM.service"
+        echo ""
+        echo "#-------------------------------------------------------------------------"
+        systemctl stop HurryupAM
+        echo "[INFO] Successfully stop HurryupAM service
+        systemctl disable HurryupAM
+        echo "[INFO] Successfully disable HurryupAM service.  ->  $service_file_path"
+        rm -rf $service_file_path
+        echo "[INFO] Successfully delete stop service file.  ->  $HurryupAM.service"
+        rm -rf $agent_file
         echo "[INFO] Successfully delete Hurryup agent file.  ->  $agent_install_all_path"
+        rm -rf $manager_file
+        echo "[INFO] Successfully delete Hurryup manager file  ->  $agent_manager_file"
+        rm -rf $log_dir_path
         echo "[INFO] Successfully delete Hurryup log files.
                                         ->      $log_manager_path
-                                                        $log_manager_path
-                                                        $log_dir_path"
+                                                $log_manager_path
+                                                $log_dir_path"
 
+        echo "#-------------------------------------------------------------------------"
         echo ""
         echo "[INFO] Complete deleted Hurryup Agent program."
         exit 1
