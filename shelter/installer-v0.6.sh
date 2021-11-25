@@ -175,7 +175,7 @@ function uninstall(){
         systemctl disable HurryupAM
         echo "[INFO] Successfully disable HurryupAM service.  ->  $service_file_path"
         rm -rf $service_file_path
-        echo "[INFO] Successfully delete stop service file.  ->  $HurryupAM.service"
+        echo "[INFO] Successfully delete stop service file.  ->  $service_file_path"
         rm -rf $agent_file
         echo "[INFO] Successfully delete Hurryup agent file.  ->  $agent_install_all_path"
         rm -rf $manager_file
