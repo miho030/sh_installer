@@ -12,8 +12,8 @@ check_ubuntu_comm=$(uname -a | grep Ubuntu | awk '{print $2}')
 agent_install_path="/usr/local/bin/"
 
 log_dir_path="/var/log/hurryup/"
-log_manager_path="/var/log/hurryup/manager/HurryUp_Agent_Manager"
-log_and_setupfile_path="/var/log/hurryup/agent/HurryUp_Agent"
+log_manager_path="/var/log/hurryup/manager/"
+log_and_setupfile_path="/var/log/hurryup/agent/"
 service_file_path="/etc/systemd/system/HurryupAM.service"
 #-----------------------------------------------
 # Simple interface and usage
