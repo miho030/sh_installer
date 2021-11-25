@@ -122,6 +122,7 @@ function install(){
         if [ -e "$agent_install_all_path" ]; then
                 echo "[+] $agent_file already installed.  ->  $agent_install_path"
         else
+                chmod 755 $agent_file
                 cp -r $agent_file $agent_install_path
                 echo "[INFO] Successfully install $agent_file.  ->   $agent_install_path"
         fi
@@ -130,6 +131,7 @@ function install(){
         if [ -e "$manager_install_path" ]; then
                 echo "[+] $manager_file already installed.  ->  $manager_install_path"
         else
+                chmod 755 $manager_file
                 cp -r $manager_file $agent_install_path
                 echo "[INFO] Successfully install $manager_file.  ->  $manager_install_path"
         fi
