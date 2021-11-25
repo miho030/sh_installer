@@ -98,10 +98,6 @@ function enable_service(){
 
 #-----------------------------------------------
 function install(){
-
-
-
-
         # Check Os platform name and load several agent file.
         if [ $check_raspberry_comm == "raspberrypi" ]; then
                 echo "[INFO] Checking OS platform name.  ->  $check_raspberry_comm"
@@ -162,11 +158,6 @@ function uninstall(){
         echo ""
         echo "[WARN] This operation might lose all data gnerated of Agent program of the Hurryup solution !!"
         echo ""
-
-        systemctl stop HurryupAM
-        systemctl disable HurrupAM
-        rm -rf $service_file_path
-        rm -rf $agent_install_path
 
         echo ""
         echo "#-------------------------------------------------------------------------"
