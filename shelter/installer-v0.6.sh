@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #-----------------------------------------------
-rasp_file="./armv7_32bit/HurryUp_Agent"
-ubuntu_file="./ubuntu/HurryUp_Agent"
+rasp_file="./Agent/armv7_32bit/HurryUp_Agent"
+ubuntu_file="./Agent/ubuntu/HurryUp_Agent"
 check_raspberry_comm=$(uname -a | grep raspberrypi | awk '{print $2}')
 check_ubuntu_comm=$(uname -a | grep Ubuntu | awk '{print $2}')
 
@@ -105,9 +105,10 @@ function install(){
 		echo "[INFO] Checking OS platform name.  ->  $check_raspberry_comm"
 		agent_file=$rasp_file
 	else
-		if [ $check_ubuntu_comm == "Ubuntu" ]; then
+		if [ $check_ubuntu_comm == "ubuntu" ]; then
 			echo "[INFO] Checking OS platform name.  ->  $check_ubuntu_comm"
 			agent_file=$ubuntu_file
+		fi
 	fi
 
 	# Copy Agent file to /usr/local/bin directory
