@@ -13,7 +13,7 @@ current_dir=$(pwd)
 current_agent_dir="$current_dir/$agent_file"
 
 log_dir_path="/var/log/hurryup/"
-log_manager_path="/var/log/hurryup/AgentManager/"
+log_manager_path="/var/log/hurryup/Manager/"
 log_and_setupfile_path="/var/log/hurryup/Agent/"
 service_file_path="/etc/systemd/system/HurryupAM.service"
 #-----------------------------------------------
@@ -62,6 +62,8 @@ function make_service(){
         echo "
 [Unit]
 Description=BoB10 HurryUp Agent Manager Server
+Wants=network-online.target
+After=network.target network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/HurryUp_Agent_Manager
