@@ -189,7 +189,6 @@ function uninstall(){
         echo "#-------------------------------------------------------------------------"
         echo ""
         echo "[INFO] Complete deleted Hurryup Agent program."
-        exit 1
 }
 
 
