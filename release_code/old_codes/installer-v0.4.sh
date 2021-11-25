@@ -49,8 +49,6 @@ usage()
 	echo ""
 	exit 1
 }
-
-
 #-----------------------------------------------
 # make HurryupAM.service file and execute
 function make_service(){
