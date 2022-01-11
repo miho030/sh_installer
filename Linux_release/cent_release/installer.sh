@@ -137,7 +137,7 @@ function install(){
                 echo "[+] $manager_file already installed.  ->  $manager_install_path"
         else
                 chmod 755 $manager_file
-                cp -r $manager_file $agent_install_path
+                cp -r $manager_file $manager_install_path
                 echo "[INFO] Successfully install $manager_file.  ->  $manager_install_path"
         fi
 
