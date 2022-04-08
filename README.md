@@ -1,8 +1,23 @@
 # sh_installer
-install any program and regist systemctl service
+*install any program and regist systemctl service*
+
+## Description
+```
+This program is agent installer for SEDR solution.
+SEDR solution is threat monitoring tools deigned to work in a variety of IoT industry environments.
+```
+
+## supporting
+*Raspberry pi IoT
+*Arduino Uno / pro / pro mini .etc
+*SuperH IoT
+*PowerPC
+
+## requirment
+*SEDR-web-server
 
 
-## Hurryup Agent Install Usage
+### How to install
 
 1. raspberry_server_release.zip 사용자 home 디렉토리에 압축 해제합니다.
     ```
